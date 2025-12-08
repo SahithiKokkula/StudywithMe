@@ -18,3 +18,22 @@ venv/
 # Local files and secrets
 .env
 *.env
+
+# AI Models and cached data (DON'T UPLOAD - too large!)
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+models/
+.cache/
+huggingface/
+transformers_cache/
+~/.cache/huggingface/
+
+# Vector database storage
+chroma_db/
+*.chroma
+
+# Large PDF files (optional - comment out if you want to include PDFs)
+# *.pdf
