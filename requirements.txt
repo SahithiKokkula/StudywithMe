@@ -1,0 +1,17 @@
+streamlit
+python-dotenv
+PyPDF2
+langchain
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+chromadb
+tiktoken
+sentence-transformers
+huggingface-hub
+transformers
+torch
+accelerate
+Pillow
+langgraph
+google-generativeai
