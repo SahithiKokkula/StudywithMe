@@ -561,15 +561,7 @@ Access via sidebar "📊 Session Stats" when agentic mode is enabled.
 
 ---
 
-## 🤝 **Contributing**
 
-Contributions are welcome! Here's how:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
 
 ### **Contribution Guidelines**
 - Follow existing code style
@@ -585,13 +577,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 👨‍💻 **Author**
 
-**Your Name**  
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
----
 
 ## 🙏 **Acknowledgments**
 
@@ -612,14 +598,6 @@ If you find Study Buddy helpful, please:
 - 🤝 Contribute improvements
 - 📢 Share with fellow students!
 
----
-
-## 📞 **Support**
-
-Having issues? Check:
-- 📖 [CHANGELOG.md](CHANGELOG.md) - Version history
-- 🚀 [QUICK_START_AGENTIC.md](QUICK_START_AGENTIC.md) - Detailed guide
-- 🐛 [GitHub Issues](https://github.com/yourusername/AI_StudyBuddy/issues) - Report bugs
 
 ---
 
