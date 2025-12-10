@@ -1,12 +1,13 @@
 # 🧠 **Study Buddy — Agentic AI Study Assistant**
 
 ![Streamlit](https://img.shields.io/badge/Framework-Streamlit-red?logo=streamlit)
-![TinyLlama](https://img.shields.io/badge/AI-TinyLlama%201.1B-blue?logo=ai)
+![Groq](https://img.shields.io/badge/AI-Groq%20API-blue?logo=ai)
+![LLaMA](https://img.shields.io/badge/Model-LLaMA%203.3%2070B-orange?logo=meta)
 ![Python](https://img.shields.io/badge/Language-Python-yellow?logo=python)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Version](https://img.shields.io/badge/version-2.0.0-purple)
+![Version](https://img.shields.io/badge/version-2.1.0-purple)
 ![Agentic](https://img.shields.io/badge/AI-Agentic%20System-blueviolet)
-![Local](https://img.shields.io/badge/100%25-Local%20%26%20Free-success)
+![RAG](https://img.shields.io/badge/RAG-Enabled-success)
 
 ---
 
@@ -27,7 +28,7 @@
 
 ## 🧠 **Project Overview**
 
-**Study Buddy** is an intelligent, autonomous AI-powered study assistant that runs **completely locally on your computer** — no API keys, no internet required after initial setup, 100% free!
+**Study Buddy** is an intelligent, autonomous AI-powered study assistant powered by **Groq API with LLaMA 3.3 70B** for lightning-fast responses. Get started in minutes with a free Groq API key!
 
 Built for students who need help with:
 - 📚 Understanding complex academic concepts
@@ -35,6 +36,7 @@ Built for students who need help with:
 - ❓ Generating practice quizzes and solving exam questions
 - ✅ Getting detailed feedback on their answers
 - 🎯 Creating personalized study plans
+- ⚡ Ultra-fast AI responses (0.5-2 seconds)
 
 ---
 
@@ -166,9 +168,10 @@ User Input
 - `utils/agent_prompts.py` - Prompt templates
 
 **AI Backend:**
-- TinyLlama 1.1B (Runs locally via Transformers)
-- HuggingFace embeddings (for RAG)
+- Groq API with LLaMA 3.3 70B (Lightning-fast inference)
+- Sentence Transformers embeddings (for RAG)
 - ChromaDB vector store (for document search)
+- Fallback to local TinyLlama 1.1B (optional)
 
 **Processing Layer:**
 - PDF text extraction (PyPDF2)
@@ -228,7 +231,7 @@ User Input
     ↓
 [Prompt Engineering] → Combine query + retrieved context
     ↓
-[AI Generation] → TinyLlama generates answer using context
+[AI Generation] → Groq LLaMA 3.3 70B generates answer using context
     ↓
 [Response] → Accurate answer based on YOUR document
 ```
@@ -307,8 +310,9 @@ User: "Compare merge sort and quick sort"
 
 ### **Prerequisites**
 - Python 3.9 or higher
-- 4GB+ RAM recommended
-- 2GB disk space (for model downloads)
+- Free Groq API key (get at: https://console.groq.com/keys)
+- 2GB+ RAM recommended
+- 500MB disk space (for embedding models)
 
 ### **Step 1: Clone Repository**
 ```bash
@@ -323,21 +327,35 @@ pip install -r requirements.txt
 
 **Key packages installed:**
 - `streamlit` - Web interface
-- `transformers` - TinyLlama model
-- `torch` - PyTorch backend
+- `groq` - Groq API client
 - `sentence-transformers` - Text embeddings
 - `langchain` - Document processing
 - `chromadb` - Vector database
 - `PyPDF2` - PDF processing
+- `transformers` - (Optional) Local LLM fallback
 
-### **Step 3: First Run**
+### **Step 3: Get Groq API Key**
+1. Go to: **https://console.groq.com/keys**
+2. Sign up (free - use Google/GitHub)
+3. Click **"Create API Key"**
+4. Copy the key (starts with `gsk_`)
+
+### **Step 4: Configure API Key**
+1. Open the `.env` file in project root
+2. Add your API key:
+   ```
+   GROQ_API_KEY=gsk_your_actual_key_here
+   ```
+3. Save the file
+
+### **Step 5: Run the App**
 ```bash
 streamlit run main.py
 ```
 
-**Note:** First launch will download TinyLlama model (~2GB) and embedding model (~80MB). This is one-time only and runs locally afterward!
+**Note:** First launch will download embedding model (~80MB) for RAG. This is one-time only!
 
-### **Step 4: Access App**
+### **Step 6: Access App**
 Open browser to: `http://localhost:8501`
 
 ---
@@ -425,12 +443,13 @@ Enable "Show Thinking Process" in sidebar to see:
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Frontend** | Streamlit | Web UI framework |
-| **AI Model** | TinyLlama 1.1B | Local language model |
-| **ML Framework** | PyTorch + Transformers | Model inference |
-| **Embeddings** | all-MiniLM-L6-v2 | Text similarity |
+| **AI Model** | Groq API (LLaMA 3.3 70B) | Lightning-fast inference |
+| **ML Framework** | Sentence Transformers | Embedding generation |
+| **Embeddings** | all-MiniLM-L6-v2 | Text similarity (384-dim) |
 | **Vector DB** | ChromaDB | Document storage |
 | **PDF Processing** | PyPDF2 | Text extraction |
 | **Language** | Python 3.9+ | Main programming language |
+| **Fallback** | TinyLlama 1.1B (Optional) | Local LLM fallback |
 
 ### **Agentic AI Stack**
 
@@ -442,13 +461,14 @@ Enable "Show Thinking Process" in sidebar to see:
 | Memory | `core/memory.py` | Context & learning |
 | Prompts | `utils/agent_prompts.py` | Agent instructions |
 
-### **Why Local?**
+### **Why Groq API?**
 
-✅ **100% Free** - No API costs ever  
-✅ **Privacy** - Your data never leaves your computer  
-✅ **Offline** - Works without internet (after initial setup)  
-✅ **No Limits** - No rate limiting or quotas  
-✅ **Fast** - No network latency  
+✅ **Lightning Fast** - 0.5-2 second responses (vs 5-30s local)  
+✅ **Free Tier** - 14,400 requests/day per model  
+✅ **Powerful** - LLaMA 3.3 70B (vs 1.1B local)  
+✅ **Quality** - Superior reasoning and accuracy  
+✅ **Easy Setup** - Just add API key and go  
+✅ **Fallback Available** - Optional local LLM support  
 
 ---
 
@@ -478,7 +498,7 @@ AI_StudyBuddy/
 │   └── rag_system.py           # Document retrieval
 │
 └── utils/                       # Utilities
-    ├── gemini_helper.py        # LLM interface (TinyLlama)
+    ├── gemini_helper.py        # LLM interface (Groq API + fallback)
     └── agent_prompts.py        # Agent prompt templates
 ```
 
@@ -581,10 +601,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🙏 **Acknowledgments**
 
-- **TinyLlama** team for the efficient 1.1B model
-- **HuggingFace** for Transformers library
+- **Groq** for the lightning-fast API and free tier
+- **Meta AI** for LLaMA 3.3 70B model
+- **HuggingFace** for Sentence Transformers
 - **Streamlit** for the amazing web framework
 - **LangChain** for document processing tools
+- **TinyLlama** team for the local fallback option
 - All contributors and users!
 
 ---

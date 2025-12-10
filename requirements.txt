@@ -15,3 +15,4 @@ accelerate
 Pillow
 langgraph
 google-generativeai
+groq

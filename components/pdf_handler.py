@@ -68,13 +68,54 @@ def handle_pdf_upload():
         if raw_len < 50:
             st.info("Text extraction is very short (<50 chars). Summarization will be blocked. Try another PDF or use OCR for scanned documents.")
 
-        # Extra custom prompt for summarization
+        # Extra custom prompt for summarization with voice input
         st.markdown("### 🎯 Customization Options")
-        user_extra = st.text_input(
-            "Any specific focus? (e.g., 'Focus on applications', 'Make exam-ready', 'Explain with examples')",
-            placeholder="Leave empty for general summary",
-            help="This will guide the AI on how to summarize"
-        )
+        
+        col1, col2 = st.columns([10, 1])
+        with col1:
+            user_extra = st.text_input(
+                "Any specific focus? (e.g., 'Focus on applications', 'Make exam-ready', 'Explain with examples')",
+                placeholder="Leave empty for general summary or use 🎤",
+                help="This will guide the AI on how to summarize",
+                key="summary_focus_text"
+            )
+        
+        with col2:
+            st.markdown("<br>", unsafe_allow_html=True)
+            try:
+                from audio_recorder_streamlit import audio_recorder
+                # WhatsApp-style: Click to record, click again to stop
+                audio_bytes = audio_recorder(
+                    text="",
+                    recording_color="#e8b62c",
+                    neutral_color="#6aa36f",
+                    icon_name="microphone",
+                    icon_size="2x",
+                    key="summary_voice_rec"
+                )
+                
+                if audio_bytes:
+                    st.info("🎧 Converting speech to text...")
+                    try:
+                        import speech_recognition as sr
+                        import io
+                        import wave
+                        
+                        # Save audio bytes directly as WAV
+                        with open("temp_summary.wav", "wb") as f:
+                            f.write(audio_bytes)
+                        
+                        recognizer = sr.Recognizer()
+                        with sr.AudioFile("temp_summary.wav") as source:
+                            audio_data = recognizer.record(source)
+                            voice_text = recognizer.recognize_google(audio_data)
+                            st.session_state.summary_focus_text = voice_text
+                            st.success(f"✅ {voice_text}")
+                            st.rerun()
+                    except Exception as e:
+                        st.error(f"Voice error: Install ffmpeg or use text input")
+            except ImportError:
+                st.caption("🎤")
 
         # Summarize / Clear buttons
         col1, col2, col3 = st.columns(3)
