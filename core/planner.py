@@ -6,7 +6,7 @@ Handles complex multi-step reasoning and task decomposition.
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 import json
-from utils.gemini_helper import generate_response
+from utils.groq_helper import generate_response
 
 
 @dataclass

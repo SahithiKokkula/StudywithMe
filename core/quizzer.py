@@ -1,4 +1,4 @@
-from utils.gemini_helper import generate_response
+from utils.groq_helper import generate_response
 
 def generate_questions(text: str, previous_context: str = "", rag_system=None) -> str:
     """

@@ -19,7 +19,6 @@ class RAGSystem:
         self._initialize_embeddings()
         
     def _initialize_embeddings(self):
-        """Initialize embedding model - using HuggingFace (free, no quota limits)"""
         try:
             from sentence_transformers import SentenceTransformer
             # Using sentence-transformers directly for embeddings (runs locally, no API needed)
@@ -34,7 +33,7 @@ class RAGSystem:
                     return self.model.encode(text, normalize_embeddings=True).tolist()
             
             self.embeddings = SimpleSentenceTransformerEmbeddings("all-MiniLM-L6-v2")
-            print("✅ HuggingFace embeddings initialized successfully")
+            print("✅ embeddings initialized successfully")
         except Exception as e:
             print(f"Warning: Could not initialize embeddings: {e}")
             self.embeddings = None
@@ -55,7 +54,7 @@ class RAGSystem:
             return False, "❌ PDF text too short to process (minimum 50 characters required)"
         
         if not self.embeddings:
-            return False, "❌ Embedding model not initialized. Check GEMINI_API_KEY."
+            return False, "❌ Embedding model not initialized" #sentence transformer used locally
         
         try:
             print(f"📊 Processing PDF text ({len(pdf_text)} chars)...")

@@ -1,4 +1,4 @@
-from utils.gemini_helper import generate_response
+from utils.groq_helper import generate_response
 
 def explain_concept(concept: str, previous_context: str = "", rag_system=None, pdf_content: str = "") -> str:
     """

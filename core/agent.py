@@ -9,7 +9,7 @@ This module implements an intelligent agent that can:
 
 import json
 from typing import Dict, List, Any, Optional
-from utils.gemini_helper import generate_response
+from utils.groq_helper import generate_response
 
 
 class StudyBuddyAgent:

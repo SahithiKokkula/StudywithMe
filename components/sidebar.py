@@ -7,7 +7,7 @@ def sidebar_ui():
 
     # API/info
     st.sidebar.markdown("### AI Model")
-    st.sidebar.info("**TinyLlama 1.1B (Local)**")
+    st.sidebar.info("**groq**")
     st.sidebar.caption("Running on your computer - 100% free!")
 
     # Mode selection

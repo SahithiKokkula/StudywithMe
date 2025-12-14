@@ -57,3 +57,6 @@ build/
 # Logs
 *.log
 logs/
+
+*.md 
+!README.md

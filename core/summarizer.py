@@ -1,4 +1,4 @@
-from utils.gemini_helper import generate_response
+from utils.groq_helper import generate_response
 
 def summarize_text(text: str, previous_context: str = "", user_focus: str = "", 
                    extra_instruction: str = "", rag_system=None) -> str:
@@ -39,7 +39,7 @@ def summarize_text(text: str, previous_context: str = "", user_focus: str = "",
                 rag_note = " (Using RAG: Retrieved most relevant sections)"
         else:
             # No focus - sample first few chunks for speed (instead of entire PDF)
-            retrieved = rag_system.retrieve_context("key concepts overview main topics", k=8)
+            retrieved = rag_system.retrieve_context(content_to_summarize[:1500], k=8)
             if retrieved:
                 content_to_summarize = retrieved
                 rag_note = " (Using RAG: Overview from key sections)"
@@ -69,8 +69,8 @@ Reference prior chat context if relevant:
 Content:
 {content_to_summarize}
 """
-    print(f"📤 Sending prompt to Gemini (length: {len(prompt)} chars)")
+    print(f"📤 Sending prompt to Groq (length: {len(prompt)} chars)")
     result = generate_response(prompt.strip())
-    print(f"📥 Got response from Gemini (length: {len(result) if result else 0} chars)")
+    print(f"📥 Got response from Groq (length: {len(result) if result else 0} chars)")
     return result
 # ...existing code...

@@ -498,7 +498,7 @@ AI_StudyBuddy/
 │   └── rag_system.py           # Document retrieval
 │
 └── utils/                       # Utilities
-    ├── gemini_helper.py        # LLM interface (Groq API + fallback)
+    ├── groq_helper.py        # LLM interface (Groq API + fallback)
     └── agent_prompts.py        # Agent prompt templates
 ```
 

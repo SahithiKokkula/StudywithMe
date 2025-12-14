@@ -29,27 +29,6 @@ if USE_GROQ and GROQ_API_KEY:
         print(f"⚠️ Groq API error: {e}")
         USE_GROQ = False
 
-# Fallback to local LLM if Groq not available
-if not USE_GROQ or not api_configured:
-    try:
-        from transformers import pipeline
-        MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-        print(f"🔄 Loading local LLM: {MODEL} (first time may take 1-2 minutes)...")
-        generator = pipeline(
-            "text-generation",
-            model=MODEL,
-            device_map="auto",
-            max_new_tokens=1024,
-            do_sample=True,
-            temperature=0.7,
-            top_p=0.95,
-        )
-        api_configured = True
-        print(f"✅ Local LLM loaded successfully: {MODEL}")
-    except Exception as e:
-        _config_error = str(e)
-        api_configured = False
-        print(f"⚠️ Error loading local model: {e}")
 
 def generate_response(prompt: str) -> str:
     """Generate response using Groq API (FAST!) or local LLM as fallback."""
@@ -63,7 +42,7 @@ Please set up Groq API:
 2. Add to .env file: GROQ_API_KEY=your_key_here
 3. Restart the app
 
-Or the app will try to use local TinyLlama (slow)."""
+"""
     
     # Use Groq API (FAST!)
     if USE_GROQ and groq_client:
