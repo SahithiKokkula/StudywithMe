@@ -1,4 +1,4 @@
-# 🧠 **Study Buddy — Agentic AI Study Assistant**
+# **Study Buddy — Agentic AI Study Assistant**
 
 ![Streamlit](https://img.shields.io/badge/Framework-Streamlit-red?logo=streamlit)
 ![Groq](https://img.shields.io/badge/AI-Groq%20API-blue?logo=ai)
@@ -11,32 +11,17 @@
 
 ---
 
-## 📖 **Table of Contents**
-- [Overview](#-project-overview)
-- [What's New - Agentic AI](#-now-powered-by-agentic-ai)
-- [Features](#-core-features)
-- [Architecture](#-architecture)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Future Scope](#-future-scope)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
-## 🧠 **Project Overview**
+## **Project Overview**
 
 **Study Buddy** is an intelligent, autonomous AI-powered study assistant powered by **Groq API with LLaMA 3.3 70B** for lightning-fast responses. Get started in minutes with a free Groq API key!
 
 Built for students who need help with:
-- 📚 Understanding complex academic concepts
-- 📝 Summarizing lengthy study materials and PDFs
-- ❓ Generating practice quizzes and solving exam questions
-- ✅ Getting detailed feedback on their answers
-- 🎯 Creating personalized study plans
-- ⚡ Ultra-fast AI responses (0.5-2 seconds)
+- Understanding complex academic concepts
+- Summarizing lengthy study materials and PDFs
+- Generating practice quizzes and solving exam questions
+- Getting detailed feedback on their answers
+- Creating personalized study plans
+- Ultra-fast AI responses (0.5-2 seconds)
 
 ---
 
@@ -179,34 +164,6 @@ User Input
 - Semantic search and retrieval
 
 ---
-
-## 🔍 **RAG System Deep Dive**
-
-### **What is RAG?**
-
-**Retrieval-Augmented Generation** is a technique that combines:
-- **Information Retrieval**: Finding relevant content from documents
-- **Text Generation**: Using AI to create natural responses
-
-### **Why RAG?**
-
-**Without RAG (Traditional Approach):**
-```
-❌ Send entire 100-page PDF to AI
-❌ Hits token limits
-❌ Expensive API costs
-❌ Slow processing
-❌ AI gets confused with too much info
-```
-
-**With RAG (Smart Approach):**
-```
-✅ Send only 3-4 relevant chunks
-✅ No token limit issues
-✅ Fast and efficient
-✅ AI focuses on what matters
-✅ Works offline locally
-```
 
 ### **RAG Pipeline in Study Buddy**
 
@@ -451,58 +408,8 @@ Enable "Show Thinking Process" in sidebar to see:
 | **Language** | Python 3.9+ | Main programming language |
 | **Fallback** | TinyLlama 1.1B (Optional) | Local LLM fallback |
 
-### **Agentic AI Stack**
-
-| Module | File | Responsibility |
-|--------|------|---------------|
-| Agent Brain | `core/agent.py` | Main controller, reasoning |
-| Planner | `core/planner.py` | Task decomposition |
-| Tools | `core/tools.py` | Tool registry & execution |
-| Memory | `core/memory.py` | Context & learning |
-| Prompts | `utils/agent_prompts.py` | Agent instructions |
-
-### **Why Groq API?**
-
-✅ **Lightning Fast** - 0.5-2 second responses (vs 5-30s local)  
-✅ **Free Tier** - 14,400 requests/day per model  
-✅ **Powerful** - LLaMA 3.3 70B (vs 1.1B local)  
-✅ **Quality** - Superior reasoning and accuracy  
-✅ **Easy Setup** - Just add API key and go  
-✅ **Fallback Available** - Optional local LLM support  
-
 ---
 
-## 📁 **Project Structure**
-
-```
-AI_StudyBuddy/
-├── main.py                      # Entry point
-├── requirements.txt             # Dependencies
-├── README.md                    # This file
-├── CHANGELOG.md                 # Version history
-├── LICENSE                      # MIT License
-│
-├── components/                  # UI Components
-│   ├── sidebar.py              # Sidebar controls
-│   ├── chat_ui.py              # Chat interface
-│   └── pdf_handler.py          # PDF upload/processing
-│
-├── core/                        # Core Logic
-│   ├── agent.py                # 🤖 Agentic AI brain
-│   ├── planner.py              # 📋 Task planning
-│   ├── tools.py                # 🛠️ Tool system
-│   ├── memory.py               # 💾 Memory management
-│   ├── explainer.py            # Concept explanations
-│   ├── summarizer.py           # Content summarization
-│   ├── quizzer.py              # Quiz generation
-│   └── rag_system.py           # Document retrieval
-│
-└── utils/                       # Utilities
-    ├── groq_helper.py        # LLM interface (Groq API + fallback)
-    └── agent_prompts.py        # Agent prompt templates
-```
-
----
 
 ## 🎯 **Usage Modes**
 
@@ -541,48 +448,6 @@ Access via sidebar "📊 Session Stats" when agentic mode is enabled.
 
 ---
 
-## 🎓 **Use Cases**
-
-### **For Students**
-- 📚 Quick concept clarification before exams
-- 📝 Summarizing textbooks and lecture notes
-- ❓ Practice questions with instant feedback
-- 🧠 Understanding difficult topics step-by-step
-
-### **For Self-Learners**
-- 🎯 Structured learning paths
-- 📖 Breaking down technical documentation
-- ✅ Self-assessment and progress tracking
-- 💡 Personalized study recommendations
-
-### **For Exam Preparation**
-- ⏰ Last-minute revision support
-- 📋 Comprehensive study packages
-- 🎯 Topic-specific quizzes
-- ✍️ Answer evaluation and improvement tips
-
----
-
-## 🔮 **Future Scope**
-
-### **Planned Features**
-- 🗣️ Voice interaction (speech-to-text/text-to-speech)
-- 🌐 Multi-language support
-- 📊 Advanced analytics and learning insights
-- 🎴 Flashcard generation for spaced repetition
-- 📱 Mobile-responsive design
-- 🔗 Integration with note-taking apps
-
-### **AI Enhancements**
-- 🚀 Option to use larger models (Llama 2, Mistral)
-- 🧠 Enhanced memory with persistent storage
-- 🤝 Multi-agent collaboration
-- 📈 Adaptive difficulty based on performance
-
----
-
-
-
 ### **Contribution Guidelines**
 - Follow existing code style
 - Add comments for complex logic
@@ -594,32 +459,6 @@ Access via sidebar "📊 Session Stats" when agentic mode is enabled.
 ## 📜 **License**
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-
-
-## 🙏 **Acknowledgments**
-
-- **Groq** for the lightning-fast API and free tier
-- **Meta AI** for LLaMA 3.3 70B model
-- **HuggingFace** for Sentence Transformers
-- **Streamlit** for the amazing web framework
-- **LangChain** for document processing tools
-- **TinyLlama** team for the local fallback option
-- All contributors and users!
-
----
-
-## ⭐ **Show Your Support**
-
-If you find Study Buddy helpful, please:
-- ⭐ Star this repository
-- 🐛 Report bugs and issues
-- 💡 Suggest new features
-- 🤝 Contribute improvements
-- 📢 Share with fellow students!
-
 
 ---
 
